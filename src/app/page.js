@@ -1,11 +1,10 @@
 import styles from "./page.module.css";
-import TodoList from "./services/components/TodoList/TodoList";
-
-export default async function Home() {
+import TodoManager from "./components/TodoManager/TodoManager";
+export default function Home() {
 
   return (
     <div className={styles.page}>
-      <TodoList/>
+      <TodoManager/>
     </div>
   );
 }
