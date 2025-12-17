@@ -1,7 +1,9 @@
+import 'dotenv/config';
+
 async function getAllTodos() {
 
     try{
-        const response = await fetch("https://todo-crud-tmwj.onrender.com/todos",
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL,
             {method: "GET"})
             
         const dados = await response.json()   
@@ -15,7 +17,7 @@ async function getAllTodos() {
 }
 async function deleteTodo(id){
     try{
-        const response = await fetch("https://todo-crud-tmwj.onrender.com/todos/"+ id,
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + id,
             {method: "DELETE"})
             
         const dados = await response.json()   
@@ -27,12 +29,13 @@ async function deleteTodo(id){
     }catch(erro){
         console.log(erro)
     }
+    
 }
 async function postTodo(task){
 
     console.log(task)
     try{
-        const response = await fetch("https://todo-crud-tmwj.onrender.com/todos",
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL,
             {    
                 method: "POST",
                 headers:{
@@ -55,7 +58,7 @@ async function postTodo(task){
 async function patchTodo(id, completed){
 
     try{
-        const response = await fetch("https://todo-crud-tmwj.onrender.com/todos/"+id,
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL+id,
             {    
                 method: "PATCH",
                 headers:{
