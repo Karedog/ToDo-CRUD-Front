@@ -52,5 +52,28 @@ async function postTodo(task){
     }
 
 }
+async function patchTodo(id, completed){
 
-export{getAllTodos, deleteTodo, postTodo}
+    try{
+        const response = await fetch("https://todo-crud-tmwj.onrender.com/todos/"+id,
+            {    
+                method: "PATCH",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({"completed": completed})
+            })
+            
+        const dados = await response.json()   
+        console.log(dados)
+        if(!response.ok){
+            throw new Error(dados.mensagem)
+        }
+        return dados
+    }catch(erro){
+        console.log(erro)
+    }
+
+}
+
+export{getAllTodos, deleteTodo, postTodo, patchTodo}
